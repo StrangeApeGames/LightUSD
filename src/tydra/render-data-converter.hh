@@ -315,6 +315,14 @@ struct MaterialConverterConfig {
   // Allow asset(e.g. texture file/shader file) which does not exit?
   bool allow_missing_asset{true};
 
+  // [canopy] Allow a bound Material whose shading network cannot be converted
+  // (e.g. `outputs:surface` is not connected because the exporter wrote a
+  // MaterialX network on `outputs:mtlx:surface` only)? When true, such a
+  // Material becomes a RenderMaterial holding only its name and path, and the
+  // mesh bound to it still converts. When false(default), the mesh conversion
+  // fails, as before.
+  bool allow_material_conversion_failure{false};
+
 };
 
 struct RenderSceneConverterConfig {

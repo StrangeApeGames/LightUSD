@@ -4302,11 +4302,20 @@ bool MeshVisitor(const tinyusdz::Path &abs_path, const tinyusdz::Prim &prim,
       if (!visitorEnv->converter->ConvertMaterial(*visitorEnv->env,
                                                   bound_material_path,
                                                   *bound_material, &rmat)) {
-        if (err) {
-          (*err) += fmt::format("Material conversion failed: {}",
-                                bound_material_path);
+        if (!visitorEnv->env->material_config
+                 .allow_material_conversion_failure) {
+          if (err) {
+            (*err) += fmt::format("Material conversion failed: {}",
+                                  bound_material_path);
+          }
+          return false;
         }
-        return false;
+
+        // [canopy] Keep the Material by its name and path only, so the mesh
+        // bound to it still converts.
+        rmat = RenderMaterial();
+        rmat.abs_path = bound_material_path.prim_part();
+        rmat.name = bound_material_path.element_name();
       }
 
       // Assign new material ID
