@@ -1,9 +1,0 @@
-{
-  "mcpServers": {
-    "tinyusdz": {
-      "command": "bun",
-      "args": ["run", "server.ts"],
-      "cwd": "/home/syoyo/work/tinyusdz/web/mcp-server"
-    }
-  }
-}

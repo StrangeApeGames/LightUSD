@@ -1,5 +1,11 @@
 # Tiny USDZ/USDA/USDC library in C++17
 
+> **The canopy branch** is LightUSD as the Ape engine's cooker builds it, from `src\` alone, in Canopy. It has no
+> `web`, `examples`, `models`, `tests`, `sandbox` or `benchmarks`, which a clone of Canopy would otherwise carry: about
+> 61 MB of the repository's 100. Built on its own with CMake it needs `-DTINYUSDZ_BUILD_TESTS=OFF
+> -DTINYUSDZ_BUILD_EXAMPLES=OFF`. A merge from upstream that changes those folders is resolved by removing them again.
+> The full tree is on the other branches.
+
 `TinyUSDZ` is secure, portable and dependency-free(depends only on C++ STL. Other 3rd-party libraries included. Yes, you don't need pxrUSD/OpenUSD library!) USDZ/USDC/USDA library written in C++17.
 
 [![GitHub Sponsors](https://img.shields.io/badge/Sponsor-❤️-pink?logo=github)](https://github.com/sponsors/lighttransport)
